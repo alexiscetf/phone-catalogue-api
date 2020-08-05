@@ -1,0 +1,6 @@
+node_modules
+crypto-config
+**/*.zip
+#FIXME: corregir la inyecccion de la CARD al contenedor
+#**/*.card
+package-lock.json

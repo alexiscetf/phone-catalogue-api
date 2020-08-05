@@ -1,0 +1,49 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: PHONE CATALOGUE API
+host: 'localhost:3010'
+basePath: /
+schemes:
+  - http
+  - https
+consumes:
+  - application/json
+  - multipart/form-data
+produces:
+  - application/json
+  - application/octet-stream
+paths:
+  /phones:
+    x-swagger-router-controller: phones.controller
+    get:
+      description: Get All Phones
+      operationId: getAllPhones
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/PhoneList'
+        default:
+          description: Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /swagger:
+    x-swagger-pipe: swagger_raw
+definitions:
+  Phone:
+    type: object
+  PhoneList:
+    required:
+      - trace
+    properties:
+      trace:
+        type: array
+        items:
+          $ref: '#/definitions/Phone'
+  ErrorResponse:
+    required:
+      - message
+    properties:
+      message:
+        type: string
